@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}изменение продукта{% endblock %}
+{% block content %}
+<div class="container">
+<div class="row my-4">
+    <div class="col-md-4"></div>
+    <div class="col-md-6 offset-md-3 p-3 bg-white">
+        <h3>Изменить продукт</h3>
+        <hr>
+        <form method="POST"  enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <a class="btn btn-success" href="{% url 'products' %}" style="width: 100%;">Отмена</a>
+            <br>
+            <br>
+            <input class="btn btn-info" type="submit" value="изменить">
+        </form>
+    </div>
+</div>
+</div>
+<br>
+
+{% endblock %}

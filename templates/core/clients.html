@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Пользователи{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <table class="table bg-white">
+            <thead class="bg-info text-white">
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">логин</th>
+                    <th scope="col">телефон</th>
+                    <th scope="col">email</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for client in clients %}
+                <tr>
+                    <th scope="row"><a class="btn btn-info btn-sm"
+                            href="{% url 'client-detail' client.id %}">посмотреть</a></th>
+                    <td>{{ client.username }}</td>
+                    <td>{{ client.profile.phone }}</td>
+                    <td>{{ client.email }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+
+{% endblock %}

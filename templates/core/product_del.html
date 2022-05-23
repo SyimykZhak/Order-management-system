@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Удаление продукта{% endblock %}
+{% block content %}
+
+<div class="container" >
+<div class="row my-4">
+    <div class="col-md-4"></div>
+    <div class="col-md-6 offset-md-3">
+        <div class="border p-3 bg-white">
+            <h3></h3>
+            <hr>
+            <form method="POST">
+                <div class="alert alert-danger">
+                    <h4>Вы уверены, что хотите удалить продукт {{ item }}?</h4>
+                </div>
+                {% csrf_token %}
+                {{ form }}
+                <a class="btn btn-primary" href="{% url 'products' %}" style="width: 100%;">Отмена</a>
+                <br>
+                <br>
+                <input class="btn btn-danger" type="submit" value="Да">
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<br>
+{% endblock %}

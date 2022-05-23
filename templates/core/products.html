@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Продукты{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+{% if user.is_authenticated and user.is_staff and user.is_superuser %}
+<section>
+<div class="container">
+  <div class="row my-4">
+      <div class="col-md-4">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+          <div class="border bg-white p-3">
+              <h4>Добавить продукт</h4>
+              <hr>
+              <form method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-success btn-block" type="submit" value="Добавить">
+            </form>
+              <br>
+          </div>
+      </div>
+      <div class="col-md-8">
+          <table class="table bg-white">
+              <thead class="bg-info">
+                  <tr class="text-white">
+                      <th scope="col">#</th>
+                      <th scope="col">название</th>
+                      <th scope="col">категория</th>
+                      <th scope="col">количество</th>
+                      <th scope="col">цена</th>
+                      <th scope="col">действие</th>
+                  </tr>
+              </thead>
+              <tbody>
+                {% for product in products %}
+                  <tr>
+                      <th scope="row">{{product.id}}</th>
+                      <td> <div class="d-flex flex-row align-items-center "><img class="rounded-circle" src="{{ product.image.url }}" width="40"><span class="ml-2">{{product.title}}</span></div>
+                      </td>
+                      <td>{{product.category}}</td>
+                      <td>{{product.kol}}</td>
+                      <td>{{product.price}} сом</td>
+                      <td>
+                          <a class="btn btn-info btn-sm" href="{% url 'products-edit' product.id %}" style="width: 100%;">Изменить</a>
+                          <a class="btn btn-danger btn-sm" href="{% url 'products-delete' product.id %}" style="width: 100%; margin: 2px 0px;">Удалить</a>
+                      </td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+</div>
+</section>
+{% else %}
+<!-- {% include 'core/clients_index.html' %} -->
+{% endif%}
+{% endblock %}
+
+

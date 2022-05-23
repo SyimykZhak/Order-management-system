@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Страница выхода{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-md-center" style="width: 100%;">
+        <div class="col-md-4"></div>
+        <div class="col-md-6 offset-md-3">
+            <div class="border p-3 bg-white">
+            <h4>Страница выхода</h4>
+            <hr>
+            <div class="alert alert-info" style="justify-content: center;">
+                <h5>Вы вышли из системы</h5>
+            </div>
+            <a href="{% url 'user-login' %}" class = "btn btn-primary btn-lg btn-block" >Войти</a>
+    
+    </div>
+</div>
+</div>
+</div>
+<br>
+
+{% endblock %}

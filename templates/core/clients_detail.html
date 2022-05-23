@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Пользователь{% endblock %}
+{% block content %}
+
+<div class="row my-4">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                cтраница клиента
+            </div>
+            <div class="row p-3">
+                <div class="col-md-8">
+                    <table class="table table-borderless">
+                        <thead>
+                            <span class="h4">Информация</span class="h4">
+                            <hr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>ФИО</th>
+                                <td>{{ clients.first_name }}  {{ clients.last_name }}</td>
+                            </tr>
+                            <tr>
+                                <th>логин</th>
+                                <td>{{ clients.username }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ clients.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Телефон</th>
+                                <td>{{ clients.profile.phone }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Магазин</th>
+                                <td>{{ clients.profile.score }}</td>
+                            </tr>
+                            <tr>
+                                <th>Адрес</th>
+                                <td>{{ clients.profile.address }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <img class="img-thumbnail" src="{{ clients.profile.image.url }}" alt="profile-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+{% endblock %}

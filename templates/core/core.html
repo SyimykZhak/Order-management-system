@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Главный{% endblock %}
+{% block content %}
+
+
+
+{% if user.is_authenticated and user.is_staff and user.is_superuser %}
+
+{% else %}
+{% include 'core/clients_index.html' %}
+{% endif%}
+
+{% endblock %}
