@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="product-container">
+
+<div class="container">
+<div class="product-box">
+
+<div class="product-main">
+
+    
+    <div class="product-grid">
+
+
+     
+        <div class="product-featured">
+
+            <h2 class="title">Продукт</h2>
+
+            <div class="showcase-wrapper has-scrollbar">
+
+              <div class="showcase-container">
+
+                <div class="showcase">
+                  
+                  <div class="showcase-banner">
+                    <img src="{{product.image.url}}" alt="shampoo, conditioner & facewash packs" class="showcase-img">
+                  </div>
+
+                  <div class="showcase-content">
+                    
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <a href="#">
+                      <h3 class="showcase-title">{{product.title}}</h3>
+                    </a>
+
+                    <p class="showcase-desc">{{product.description}}
+                    </p>
+
+                    <div class="price-box">
+                      <p class="price">{{product.price}} - сом</p>
+                    </div>
+
+                   <a href="{% url 'core' %}"><button class="add-cart-btn">заказать</button>
+</a> 
+                    <div class="showcase-status">
+                      <div class="wrapper">
+                        <p>
+                          количество: <b>{{product.kol}}</b>
+                        </p>
+
+                        <p>
+                          категория: <b>{{product.category}}</b>
+                        </p>
+                      </div>
+
+                      <div class="showcase-status-bar"></div>
+                    </div>
+
+                  
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="showcase-container">
+
+                <div class="showcase">
+                  
+                  <div class="showcase-banner">
+                    <img src="{{product.image.url}}" alt="shampoo, conditioner & facewash packs" class="showcase-img">
+                  </div>
+
+                  <div class="showcase-content">
+                    
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <a href="#">
+                      <h3 class="showcase-title">{{product.title}}</h3>
+                    </a>
+
+                    <p class="showcase-desc">{{product.description}}
+                    </p>
+
+                    <div class="price-box">
+                      <p class="price">{{product.price}} - сом</p>
+                    </div>
+
+                    <a href="{% url 'core' %}"><button class="add-cart-btn">заказать</button>
+                    </a> 
+
+                    <div class="showcase-status">
+                      <div class="wrapper">
+                        <p>
+                          количество: <b>{{product.kol}}</b>
+                        </p>
+
+                        <p>
+                          категория: <b>{{product.category}}</b>
+                        </p>
+                      </div>
+
+                      <div class="showcase-status-bar"></div>
+                    </div>
+
+                  
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+    </div>
+   
+</div>
+  </div>
+</div>
+</div>
+
+{% endblock %}

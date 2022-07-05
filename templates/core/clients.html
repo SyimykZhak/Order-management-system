@@ -3,6 +3,8 @@
 {% block title %}Пользователи{% endblock %}
 {% block content %}
 
+
+{% if user.is_authenticated and user.is_staff and user.is_superuser %}
 <div class="container">
     <div class="row justify-content-md-center">
         <table class="table bg-white">
@@ -30,4 +32,8 @@
 </div>
 <br>
 
+{% else %}
+<div class="container">
+<h1>вы ошиблись страницой</h1></div>
+{% endif%}
 {% endblock %}

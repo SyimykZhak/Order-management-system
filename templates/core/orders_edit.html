@@ -3,6 +3,7 @@
 {% block title %}Заказ{% endblock %}
 {% block content %}
 {% load crispy_forms_tags %}
+{% if user.is_authenticated and user.is_staff and user.is_superuser %}
 <div class="container">
     <div class="row justify-content-md-center">
 <div class="row my-4">
@@ -61,4 +62,54 @@
 </div>
 </div>
 <br>
+{% else %}
+<div class="container">
+    <div class="row justify-content-md-center">
+<div class="row my-4">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                cтраница заказа
+            </div>
+            <div class="row p-3">
+                <div class="col-md-8">
+                    <table class="table table-borderless">
+                        <thead>
+                            <span class="h4">Информация о заказе</span class="h4">
+                            <hr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>заказчик</th>
+                                <td>{{ item.customer }}</td>
+                            </tr>
+                            <tr>
+                                <th>продукта</th>
+                                <td>{{ item.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>количество</th>
+                                <td>{{ item.order_quantity }}</td>
+                            </tr>
+                            <tr>
+                                <th>время заказа</th>
+                                <td>{{ item.created }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <img class="img-thumbnail" src="{{ item.name.image.url }}" alt="profile-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<br>
+{% endif%}
 {% endblock %}

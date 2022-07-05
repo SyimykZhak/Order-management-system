@@ -1,15 +1,12 @@
 from django.shortcuts import render,  redirect
-from django.contrib.auth.models import Group
 from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm
-from django.contrib import messages
+from django.contrib.auth.models import User
 
 def register(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            group = Group.objects.get(name='Clients')
-            user.groups.add(group)
+            form.save()
             return redirect('user-login')      
     else:
         form = CreateUserForm()

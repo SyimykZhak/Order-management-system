@@ -5,5 +5,5 @@ class UserConfig(AppConfig):
     name = 'user'
     verbose_name = 'клиенты'
 
-    def ready(self):
-        from user import signals
+    # def ready(self):
+    #     from user import signals

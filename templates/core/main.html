@@ -16,14 +16,13 @@
 
         {% for info in main %}
 
-
       <div class="showcase">
       
-        <div class="showcase-banner">
+        <div class="showcase-banner"> <a href="{% url 'product_detailview' info.id %}">
           <img src="{{info.image.url}}" alt="Casual Men's Brown shoes" class="product-img default"
             width="300">
             <img src="{{info.image.url}}" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
-
+</a>
           <div class="showcase-actions">
             <button class="btn-action">
               <ion-icon name="heart-outline"></ion-icon>
@@ -48,7 +47,7 @@
           <a href="{{info.category.get_absolute_url}}" class="showcase-category">{{info.category}}</a>
       
           <h3>
-            <a href="#" class="showcase-title">{{info.title}}</a>
+            <a href="{% url 'product_detailview' info.id %}" class="showcase-title">{{info.title}}</a>
           </h3>
       
           <div class="showcase-rating">
@@ -67,7 +66,6 @@
       
       </div>
 
-     
 
      
     {% endfor %}

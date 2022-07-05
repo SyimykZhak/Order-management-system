@@ -26,6 +26,12 @@ class CategoryDetalView(DetailView):
     ordering = ['-add_time']
     paginate_by = 10
 
+class ProductDetailView(DetailView):
+    model = Products
+    template_name ='core/product_detail.html'
+    context_object_name = "product"
+    slug_field = "id"
+
 
 def link_callback(uri, rel):
             """
@@ -89,7 +95,7 @@ def core(request):
     order_count = order.count()
     client = User.objects.all()
     clients_count = client.count()
-
+    
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
@@ -147,8 +153,6 @@ def order(request):
     client_count = client.count()
     product = Products.objects.all()
     product_count = product.count()
-   
-
     context = {
         'order': order,
         'client_count': client_count,
@@ -245,3 +249,11 @@ def orders_edit(request, pk):
     return render(request, 'core/orders_edit.html', context)
 
 
+class Search(ListView):
+    def get_queryset(self):
+        return Products.objects.filter(title__icontains=self.request.GET.get("q"))
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["q"] = f'q={self.request.GET.get("q")}&'
+        return context

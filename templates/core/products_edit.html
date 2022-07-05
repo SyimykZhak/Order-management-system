@@ -3,6 +3,8 @@
 {% load crispy_forms_tags %}
 {% block title %}изменение продукта{% endblock %}
 {% block content %}
+
+{% if user.is_authenticated and user.is_staff and user.is_superuser %}
 <div class="container">
 <div class="row my-4">
     <div class="col-md-4"></div>
@@ -21,5 +23,8 @@
 </div>
 </div>
 <br>
-
+{% else %}
+<div class="container">
+<h1>вы ошиблись страницой</h1></div>
+{% endif%}
 {% endblock %}

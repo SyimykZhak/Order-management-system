@@ -12,12 +12,20 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-from pickle import TRUE
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+import os
+from pathlib import Path
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = 'django-insecure-o)d+@krn$jxb3l42cfz%vy!@9#%by52-g^3@r4fgb3%9@at=u9'
+
+DEBUG = True
+
+ALLOWED_HOSTS = ['aspekt-cli.herokuapp.com', '127.0.0.1']  
 
 
 # Application definition
@@ -129,7 +137,7 @@ STATICFILES_DIRS = ( os.path.join('static'), )
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = 'core'
+LOGIN_REDIRECT_URL = 'main'
 
 LOGIN_URL = 'user-login'
 # Default primary key field type

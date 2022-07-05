@@ -67,13 +67,13 @@
         </a> -->
 
         <div class="header-search-container">
+          <form action="{% url 'search' %}" method="get">
+          <input type="search" class="search-field" placeholder="Введите названия товара..." name="q" required="">
 
-          <input type="search" name="search" class="search-field" placeholder="Введите названия товара...">
-
-          <button class="search-btn">
+          <button type="submit" class="search-btn" >
             <ion-icon name="search-outline"></ion-icon>
           </button>
-
+</form>
         </div>
 
         <div class="header-user-actions">
@@ -480,25 +480,61 @@
           </div> 
           {% elif user.is_authenticated %}
           <div class="container">
+            <div class="category-item-container has-scrollbar">
           <div class="category-item">
     
             <div class="category-img-box">
-              <img src="{% static 'assets/images/icons/glasses.svg' %}" alt="glasses & lens" width="30">
+              <img src="{% static 'assets/images/images/orders.svg' %}" alt="glasses & lens" width="30">
             </div>
     
             <div class="category-content-box">
     
               <div class="category-content-flex">
                 <h3 class="category-item-title">Мои заказы</h3>
-    
-                <p class="category-item-amount">13</p>
               </div>
     
-              <a href="{% url 'orders' %}" class="category-btn">Посмотреть</a>
+              <a href="{% url 'core' %}" class="category-btn">Посмотреть</a>
     
             </div>
     
           </div>    
+          <div class="category-item">
+    
+            <div class="category-img-box">
+              <img src="{% static 'assets/images/images/products.svg' %}" alt="winter wear" width="30">
+            </div>
+    
+            <div class="category-content-box">
+    
+              <div class="category-content-flex">
+                <h3 class="category-item-title">Продукты</h3>
+              </div>
+    
+              <a href="{% url 'main' %}" class="category-btn">Посмотреть</a>
+    
+            </div>
+    
+          </div>
+
+          <div class="category-item">
+    
+            <div class="category-img-box">
+              <img src="{% static 'assets/images/images/users.svg' %}" alt="dress & frock" width="30">
+            </div>
+    
+            <div class="category-content-box">
+    
+              <div class="category-content-flex">
+                <h3 class="category-item-title">Профиль</h3>
+    
+              </div>
+    
+              <a href="{% url 'user-profile' %}" class="category-btn">Посмотреть</a>
+    
+            </div>
+    
+          </div>
+    </div>
         </div>
     
       </div>
