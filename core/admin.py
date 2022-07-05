@@ -58,8 +58,13 @@ class ProductsAdmin(admin.ModelAdmin):
     unpublish.short_description = "Снять с публикации"
     unpublish.allowed_permissions = ('change',)
 
-    get_image.short_description = "Постер"
+    get_image.short_description = "фото"
 
 
 
-admin.site.register(Order)
+
+@admin.register(Order)
+class OrdersAdmin(admin.ModelAdmin):
+    list_display = ("customer", "name","created","draft")
+    list_editable = ("draft",)
+    list_filter = ("customer", "created","name")

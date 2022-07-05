@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="product-container">
+
+    <div class="container">
+    <div class="product-box">
+    
+    <div class="product-main">
+    
+        <h2 class="title">Продукты</h2>
+        
+    
+        <div class="product-grid">
+    
+            {% for products in  category.product_category.all %} 
+    
+          <div class="showcase">
+          
+            <div class="showcase-banner">
+              <img src="{{products.image.url}}" alt="Casual Men's Brown shoes" class="product-img default"
+                width="300">
+                <img src="{{products.image.url}}" alt="Mens Winter Leathers Jackets" width="300" class="product-img hover">
+    
+              <div class="showcase-actions">
+                <button class="btn-action">
+                  <ion-icon name="heart-outline"></ion-icon>
+                </button>
+          
+                <button class="btn-action">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </button>
+          
+                <button class="btn-action">
+                  <ion-icon name="repeat-outline"></ion-icon>
+                </button>
+          
+                <button class="btn-action">
+                  <ion-icon name="bag-add-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+          
+            <div class="showcase-content">
+              <a href="#" class="showcase-category">{{products.category}}</a>
+          
+              <h3>
+                <a href="#" class="showcase-title">{{products.title}}</a>
+              </h3>
+          
+              <div class="showcase-rating">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+              </div>
+          
+              <div class="price-box">
+                <p class="price">{{products.price}} - сом</p>
+              </div>
+          
+            </div>
+          
+          </div>
+    
+         
+    
+         
+        {% endfor %}
+        </div>
+       
+    </div>
+      </div>
+    </div>
+    </div>
+
+
+{% endblock %}

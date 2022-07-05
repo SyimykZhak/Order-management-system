@@ -15,5 +15,5 @@ class Profile(models.Model):
         return f'{self.customer.username}'
 
     class Meta:
-        verbose_name = "Пользователи"
-        verbose_name_plural = "Пользователи"
+        verbose_name = "Клиенты"
+        verbose_name_plural = "Клиенты"

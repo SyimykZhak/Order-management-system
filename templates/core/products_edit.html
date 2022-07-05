@@ -11,7 +11,7 @@
         <hr>
         <form method="POST"  enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form|crispy }}
+            {{ form|crispy }}<br>
             <a class="btn btn-success" href="{% url 'products' %}" style="width: 100%;">Отмена</a>
             <br>
             <br>

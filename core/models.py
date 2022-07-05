@@ -1,15 +1,18 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 # Create your models here.
 
 class Category(models.Model):
     name = models.CharField("Категория", max_length=150)
-    description = models.TextField("Описание")
     url = models.SlugField(max_length=160, unique=True)
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('category_detail', kwargs={'slug': self.url})
 
     class Meta:
         verbose_name = "Категория"
@@ -22,7 +25,7 @@ class Products(models.Model):
     price = models.PositiveIntegerField("Цена",)
     kol = models.PositiveIntegerField("Количество",)
     category = models.ForeignKey(
-        Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True
+        Category, verbose_name="Категория", on_delete=models.SET_NULL, null=True,related_name="product_category"
     )
     draft = models.BooleanField("Черновик", default=False)
 
@@ -38,7 +41,8 @@ class Order(models.Model):
     customer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     order_quantity = models.PositiveIntegerField("количество заказа",null=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
-    
+    draft = models.BooleanField("Сделано", default=False)
+
     def save(self, *args, **kwargs):
         if not self.id:
             self.created_at = timezone.now()

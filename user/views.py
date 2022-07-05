@@ -8,7 +8,7 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            group = Group.objects.get(name='Customers')
+            group = Group.objects.get(name='Clients')
             user.groups.add(group)
             return redirect('user-login')      
     else:
