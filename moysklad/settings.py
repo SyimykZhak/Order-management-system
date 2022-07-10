@@ -21,11 +21,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-o)d+@krn$jxb3l42cfz%vy!@9#%by52-g^3@r4fgb3%9@at=u9'
 
-DEBUG = True
-
-ALLOWED_HOSTS = ['aspekt-cli.herokuapp.com', '127.0.0.1']  
 
 
 # Application definition
