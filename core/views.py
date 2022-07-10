@@ -66,7 +66,6 @@ def link_callback(uri, rel):
 
 def order_render_pdf_view(request, *args, **kwargs):
     order = get_list_or_404(Order.objects.filter(draft=False))
-
     template_path = 'core/pdf.html'
     context = {'order': order}
     # Create a Django response object, and specify content_type as pdf
